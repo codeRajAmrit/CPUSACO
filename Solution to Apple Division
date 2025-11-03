@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+long long addElements(const vector<long long> &v) {
+    long long flag = 0;
+    for (long long ele : v) flag += ele;
+    return flag;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    vector<long long> weights(n);  // Change to long long
+    for (int i = 0; i < n; i += 1) cin >> weights[i];
+
+    long long minDiff = LLONG_MAX;  // Change to LLONG_MAX
+    for (int i = 0; i < (1 << n); i += 1) {
+        vector<long long> subset;
+        for (int j = 0; j < n; j += 1) {
+            if (i & (1 << j)) subset.emplace_back(weights[j]);
+        }
+
+        long long alpha = addElements(subset), delta = addElements(weights);
+        minDiff = min(minDiff, abs(delta - 2*alpha));
+    }
+    cout << minDiff;
+
+    return 0;
+}
