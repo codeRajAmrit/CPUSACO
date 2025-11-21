@@ -1,0 +1,98 @@
+Question 1 : 
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n = 6, x = 0; 
+
+    for (int i = 1; i <= n; i += 1) {
+        for (int j = 0; j < i; j += 1) {
+            x += i * pow(10, i -j - 1); 
+        }
+        printf("%d, ", x); 
+        x = 0; 
+    }
+    return 0; 
+}
+______________________________________________________________________________________________________________________________________________________________________________________________
+Question 2 : 
+
+#include <stdio.h>
+
+int main() {
+    int n; 
+    printf("Number of Students: "); 
+    scanf("%d", &n); 
+
+    int details[n][2]; 
+    for (int i = 0; i < n; i += 1) {    
+        printf("Roll Number and Marks: "); 
+        scanf("%d %d", &details[i][0], &details[i][1]); 
+    }
+
+    // calculating average
+    int total_Marks = 0; 
+    for (int i = 0; i < n; i += 1) total_Marks += details[i][1]; 
+    float average = (float) total_Marks / n; 
+
+    // printing roll Numbers with marks less than average
+    printf("Roll numbers with marks less than average: ");
+    for (int i = 0; i < n; i += 1) {
+        if (details[i][1] < average) printf("%d, ", details[i][0]); 
+    }
+
+    //finding roll numbers with maximum and minimum marks 
+    int lowestIndex = 0, highestIndex = 0; 
+    for (int i = 0; i < n; i += 1) {
+        if (details[i][1] > details[highestIndex][1]) highestIndex = i; 
+        if (details[i][1] < details[lowestIndex][1]) lowestIndex = i; 
+    }
+
+    printf("\nRoll No. with lowest marks: %d", details[lowestIndex][0]); 
+    printf("\nRoll No. with highest marks: %d", details[highestIndex][0]); 
+
+    return 0; 
+}
+______________________________________________________________________________________________________________________________________________________________________________________________
+Question 3 : 
+
+#include <stdio.h>
+#include <math.h>
+#define PI 3.141592653589793
+
+int main() {
+
+    for (int i = 0; i <= 180; i += 20) {
+        float radians = (i*PI) / 180.0; 
+        float trigValue = cos(radians); 
+        printf("Cosine(%d): %.2f\n", i, trigValue); 
+    }
+    return 0 ;
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+Question 4 : 
+
+#include <stdio.h>
+#include <math.h>
+#define PI 3.141592653589793
+
+int main() {
+    int income; 
+    printf("Income : "); 
+    scanf("%d", &income); 
+    float tax; 
+
+    if (income <= 100000) tax = 0; 
+    else if (income <= 150000) tax = 0.10 * (income - 100000); 
+    else tax = 5000 + 0.20 * (income - 150000); 
+    
+    printf("Income : %d, Tax : %.2f\n", income, tax); 
+    
+    return 0 ;
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________________
+
+Question 4 : 
